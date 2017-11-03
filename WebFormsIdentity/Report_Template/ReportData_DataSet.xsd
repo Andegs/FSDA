@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportData_DataSet" targetNamespace="http://tempuri.org/ReportData_DataSet.xsd" xmlns:mstns="http://tempuri.org/ReportData_DataSet.xsd" xmlns="http://tempuri.org/ReportData_DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable_ReportDataTableAdapter" GeneratorDataComponentClassName="DataTable_ReportDataTableAdapter" Name="DataTable_ReportData" UserDataComponentName="DataTable_ReportDataTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_reports.partner_report_id, partner_reports.project_id, partner_reports.report_period_id, partner_reports.year_id, projects.project_name, projects.implementing_partner, projects.acronym, 
+                         projects.partnership_reference_number, projects.project_objectives, projects.expected_outcomes, report_periods.period_name, years.year
+FROM            partner_reports LEFT OUTER JOIN
+                         years ON partner_reports.year_id = years.year_id LEFT OUTER JOIN
+                         report_periods ON partner_reports.report_period_id = report_periods.report_period_id LEFT OUTER JOIN
+                         projects ON partner_reports.project_id = projects.project_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="project_id" DataSetColumn="project_id" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="project_name" DataSetColumn="project_name" />
+              <Mapping SourceColumn="implementing_partner" DataSetColumn="implementing_partner" />
+              <Mapping SourceColumn="acronym" DataSetColumn="acronym" />
+              <Mapping SourceColumn="partnership_reference_number" DataSetColumn="partnership_reference_number" />
+              <Mapping SourceColumn="project_objectives" DataSetColumn="project_objectives" />
+              <Mapping SourceColumn="expected_outcomes" DataSetColumn="expected_outcomes" />
+              <Mapping SourceColumn="period_name" DataSetColumn="period_name" />
+              <Mapping SourceColumn="year" DataSetColumn="year" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="partner_reportsTableAdapter" GeneratorDataComponentClassName="partner_reportsTableAdapter" Name="partner_reports" UserDataComponentName="partner_reportsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_reports.partner_report_id, partner_reports.achievements, partner_reports.lessons_learned, partner_reports.next_steps, partner_reports.achievements_attachment, partner_reports.lessons_learned_attachment, 
+                         partner_reports.next_steps_attachment, partner_reports.cumulative_expenditure, partner_reports.cumulative_expenditure_attachment, projects.budget, partner_reports.project_id, partner_reports.report_period_id, 
+                         partner_reports.year_id, partner_reports.draft, partner_reports.saved, partner_reports.submitted, partner_reports.approved, partner_reports.archived
+FROM            partner_reports LEFT OUTER JOIN
+                         projects ON partner_reports.project_id = projects.project_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="achievements" DataSetColumn="achievements" />
+              <Mapping SourceColumn="lessons_learned" DataSetColumn="lessons_learned" />
+              <Mapping SourceColumn="next_steps" DataSetColumn="next_steps" />
+              <Mapping SourceColumn="achievements_attachment" DataSetColumn="achievements_attachment" />
+              <Mapping SourceColumn="lessons_learned_attachment" DataSetColumn="lessons_learned_attachment" />
+              <Mapping SourceColumn="next_steps_attachment" DataSetColumn="next_steps_attachment" />
+              <Mapping SourceColumn="cumulative_expenditure" DataSetColumn="cumulative_expenditure" />
+              <Mapping SourceColumn="cumulative_expenditure_attachment" DataSetColumn="cumulative_expenditure_attachment" />
+              <Mapping SourceColumn="budget" DataSetColumn="budget" />
+              <Mapping SourceColumn="project_id" DataSetColumn="project_id" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="draft" DataSetColumn="draft" />
+              <Mapping SourceColumn="saved" DataSetColumn="saved" />
+              <Mapping SourceColumn="submitted" DataSetColumn="submitted" />
+              <Mapping SourceColumn="approved" DataSetColumn="approved" />
+              <Mapping SourceColumn="archived" DataSetColumn="archived" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByPartnerReportId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByPartnerReportId" GeneratorSourceName="FillByPartnerReportId" GetMethodModifier="Public" GetMethodName="GetDataByPartnerReportId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByPartnerReportId" UserSourceName="FillByPartnerReportId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_reports.partner_report_id, partner_reports.achievements, partner_reports.lessons_learned, partner_reports.next_steps, partner_reports.achievements_attachment, partner_reports.lessons_learned_attachment, 
+                         partner_reports.next_steps_attachment, partner_reports.cumulative_expenditure, partner_reports.cumulative_expenditure_attachment, projects.budget, partner_reports.project_id, partner_reports.report_period_id, 
+                         partner_reports.year_id, partner_reports.draft, partner_reports.saved, partner_reports.submitted, partner_reports.approved, partner_reports.archived
+FROM            partner_reports LEFT OUTER JOIN
+                         projects ON partner_reports.project_id = projects.project_id
+WHERE        (partner_reports.partner_report_id = @partner_report_id) OR
+                         (partner_reports.partner_report_id IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="partner_report_id" ColumnName="partner_report_id" DataSourceName="WebFormsIdentityDatabase.dbo.partner_reports" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@partner_report_id" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="partner_report_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="partner_challengesTableAdapter" GeneratorDataComponentClassName="partner_challengesTableAdapter" Name="partner_challenges" UserDataComponentName="partner_challengesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="WebFormsIdentityDatabase.dbo.partner_challenges" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [partner_challenges] WHERE (([challenge_id] = @Original_challenge_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_challenge_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="challenge_id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [partner_challenges] ([partner_report_id], [project_id], [report_period_id], [year_id], [challenge], [effect_on_implementation], [mitigative_strategy], [attachment]) VALUES (@partner_report_id, @project_id, @report_period_id, @year_id, @challenge, @effect_on_implementation, @mitigative_strategy, @attachment)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@partner_report_id" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="partner_report_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@project_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="project_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@report_period_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="report_period_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@year_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="year_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@challenge" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="challenge" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@effect_on_implementation" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="effect_on_implementation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@mitigative_strategy" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="mitigative_strategy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@attachment" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="attachment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_challenges.*
+FROM            partner_challenges</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [partner_challenges] SET [partner_report_id] = @partner_report_id, [project_id] = @project_id, [report_period_id] = @report_period_id, [year_id] = @year_id, [challenge] = @challenge, [effect_on_implementation] = @effect_on_implementation, [mitigative_strategy] = @mitigative_strategy, [attachment] = @attachment WHERE (([challenge_id] = @Original_challenge_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@partner_report_id" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="partner_report_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@project_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="project_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@report_period_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="report_period_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@year_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="year_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@challenge" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="challenge" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@effect_on_implementation" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="effect_on_implementation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@mitigative_strategy" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="mitigative_strategy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@attachment" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="attachment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_challenge_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="challenge_id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="challenge_id" DataSetColumn="challenge_id" />
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="project_id" DataSetColumn="project_id" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="challenge" DataSetColumn="challenge" />
+              <Mapping SourceColumn="effect_on_implementation" DataSetColumn="effect_on_implementation" />
+              <Mapping SourceColumn="mitigative_strategy" DataSetColumn="mitigative_strategy" />
+              <Mapping SourceColumn="attachment" DataSetColumn="attachment" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        project_overall_rating.project_overall_rating_id, project_overall_rating.partner_report_id, project_overall_rating.project_id, project_overall_rating.report_period_id, project_overall_rating.year_id, 
+                         project_overall_rating.comment, project_rating.rating, project_overall_rating.rating_id
+FROM            project_overall_rating INNER JOIN
+                         project_rating ON project_overall_rating.rating_id = project_rating.rating_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="project_overall_rating_id" DataSetColumn="project_overall_rating_id" />
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="project_id" DataSetColumn="project_id" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="comment" DataSetColumn="comment" />
+              <Mapping SourceColumn="rating" DataSetColumn="rating" />
+              <Mapping SourceColumn="rating_id" DataSetColumn="rating_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable2TableAdapter" GeneratorDataComponentClassName="DataTable2TableAdapter" Name="DataTable2" UserDataComponentName="DataTable2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_indicator_results.partner_indicator_result_id, partner_indicator_results.partner_report_id, partner_indicators.partner_indicator_id, partner_indicators.indicator, partner_indicators.target, report_periods.report_period_id, 
+                         report_periods.period_name, years.year_id, years.year, partner_indicator_results.result, partner_indicator_results.comment, partner_indicator_results.disaggregation, indicator_report_planner.q_target, 
+                         project_indicator_disaggregation.disaggregation_id AS disaggregation_foreign_id, project_indicator_disaggregation.id AS indicator_disaggregation_id, 
+                         project_indicator_disaggregation_result.id AS indicator_disaggregation_result_id, project_indicator_disaggregation_result.disaggregation_result, disaggregation_1.id AS disaggregation_id, 
+                         disaggregation_1.disaggregation_id AS disaggregation_self_id, disaggregation_1.disaggregation_name, disaggregation_2.id AS parent_id, disaggregation_2.disaggregation_name AS parent_name, 
+                         disaggregation_2.disaggregation_id AS child_id, disaggregation.id AS second_parent_id, disaggregation.disaggregation_id AS second_child_id, disaggregation.disaggregation_name AS second_parent_name, 
+                         partner_indicator_results.attachment
+FROM            project_indicator_disaggregation RIGHT OUTER JOIN
+                         disaggregation AS disaggregation_1 LEFT OUTER JOIN
+                         disaggregation AS disaggregation_2 LEFT OUTER JOIN
+                         disaggregation ON disaggregation_2.disaggregation_id = disaggregation.id ON disaggregation_1.disaggregation_id = disaggregation_2.id ON 
+                         project_indicator_disaggregation.disaggregation_id = disaggregation_1.id RIGHT OUTER JOIN
+                         indicator_report_planner INNER JOIN
+                         report_periods ON indicator_report_planner.report_period_id = report_periods.report_period_id INNER JOIN
+                         years ON indicator_report_planner.year_id = years.year_id INNER JOIN
+                         partner_indicators ON indicator_report_planner.partner_indicator_id = partner_indicators.partner_indicator_id ON project_indicator_disaggregation.project_indicator_id = partner_indicators.partner_indicator_id RIGHT OUTER JOIN
+                         partner_indicator_results ON report_periods.report_period_id = partner_indicator_results.report_period_id AND years.year_id = partner_indicator_results.year_id AND 
+                         partner_indicators.partner_indicator_id = partner_indicator_results.partner_indicator_id LEFT OUTER JOIN
+                         project_indicator_disaggregation_result ON project_indicator_disaggregation.id = project_indicator_disaggregation_result.project_indicator_disaggregation_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="partner_indicator_result_id" DataSetColumn="partner_indicator_result_id" />
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="partner_indicator_id" DataSetColumn="partner_indicator_id" />
+              <Mapping SourceColumn="indicator" DataSetColumn="indicator" />
+              <Mapping SourceColumn="target" DataSetColumn="target" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="period_name" DataSetColumn="period_name" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="year" DataSetColumn="year" />
+              <Mapping SourceColumn="result" DataSetColumn="result" />
+              <Mapping SourceColumn="comment" DataSetColumn="comment" />
+              <Mapping SourceColumn="disaggregation" DataSetColumn="disaggregation" />
+              <Mapping SourceColumn="q_target" DataSetColumn="q_target" />
+              <Mapping SourceColumn="disaggregation_foreign_id" DataSetColumn="disaggregation_foreign_id" />
+              <Mapping SourceColumn="indicator_disaggregation_id" DataSetColumn="indicator_disaggregation_id" />
+              <Mapping SourceColumn="indicator_disaggregation_result_id" DataSetColumn="indicator_disaggregation_result_id" />
+              <Mapping SourceColumn="disaggregation_result" DataSetColumn="disaggregation_result" />
+              <Mapping SourceColumn="disaggregation_id" DataSetColumn="disaggregation_id" />
+              <Mapping SourceColumn="disaggregation_self_id" DataSetColumn="disaggregation_self_id" />
+              <Mapping SourceColumn="disaggregation_name" DataSetColumn="disaggregation_name" />
+              <Mapping SourceColumn="parent_id" DataSetColumn="parent_id" />
+              <Mapping SourceColumn="parent_name" DataSetColumn="parent_name" />
+              <Mapping SourceColumn="child_id" DataSetColumn="child_id" />
+              <Mapping SourceColumn="second_parent_id" DataSetColumn="second_parent_id" />
+              <Mapping SourceColumn="second_child_id" DataSetColumn="second_child_id" />
+              <Mapping SourceColumn="second_parent_name" DataSetColumn="second_parent_name" />
+              <Mapping SourceColumn="attachment" DataSetColumn="attachment" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByPartnerReportId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByPartnerReportId" GeneratorSourceName="FillByPartnerReportId" GetMethodModifier="Public" GetMethodName="GetDataByPartnerReportId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByPartnerReportId" UserSourceName="FillByPartnerReportId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        partner_indicator_results.partner_indicator_result_id, partner_indicator_results.partner_report_id, partner_indicators.partner_indicator_id, partner_indicators.indicator, partner_indicators.target, report_periods.report_period_id, 
+                         report_periods.period_name, years.year_id, years.year, partner_indicator_results.result, partner_indicator_results.comment, partner_indicator_results.disaggregation, indicator_report_planner.q_target, 
+                         project_indicator_disaggregation.disaggregation_id AS disaggregation_foreign_id, project_indicator_disaggregation.id AS indicator_disaggregation_id, 
+                         project_indicator_disaggregation_result.id AS indicator_disaggregation_result_id, project_indicator_disaggregation_result.disaggregation_result, disaggregation_1.id AS disaggregation_id, 
+                         disaggregation_1.disaggregation_id AS disaggregation_self_id, disaggregation_1.disaggregation_name, disaggregation_2.id AS parent_id, disaggregation_2.disaggregation_name AS parent_name, 
+                         disaggregation_2.disaggregation_id AS child_id, disaggregation.id AS second_parent_id, disaggregation.disaggregation_id AS second_child_id, disaggregation.disaggregation_name AS second_parent_name, partner_indicator_results.attachment
+FROM            project_indicator_disaggregation RIGHT OUTER JOIN
+                         indicator_report_planner INNER JOIN
+                         report_periods ON indicator_report_planner.report_period_id = report_periods.report_period_id INNER JOIN
+                         years ON indicator_report_planner.year_id = years.year_id INNER JOIN
+                         partner_indicators ON indicator_report_planner.partner_indicator_id = partner_indicators.partner_indicator_id ON project_indicator_disaggregation.project_indicator_id = partner_indicators.partner_indicator_id RIGHT OUTER JOIN
+                         partner_indicator_results ON report_periods.report_period_id = partner_indicator_results.report_period_id AND years.year_id = partner_indicator_results.year_id AND 
+                         partner_indicators.partner_indicator_id = partner_indicator_results.partner_indicator_id LEFT OUTER JOIN
+                         project_indicator_disaggregation_result ON project_indicator_disaggregation.id = project_indicator_disaggregation_result.project_indicator_disaggregation_id LEFT OUTER JOIN
+                         disaggregation AS disaggregation_1 LEFT OUTER JOIN
+                         disaggregation AS disaggregation_2 LEFT OUTER JOIN
+                         disaggregation ON disaggregation_2.disaggregation_id = disaggregation.id ON disaggregation_1.disaggregation_id = disaggregation_2.id ON project_indicator_disaggregation.disaggregation_id = disaggregation_1.id
+WHERE        (partner_indicator_results.partner_report_id = @partner_report_id OR
+                         partner_indicator_results.partner_report_id IS NULL) AND (project_indicator_disaggregation_result.partner_report_id = @partner_report_id OR
+                         project_indicator_disaggregation_result.partner_report_id IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="partner_report_id" ColumnName="partner_report_id" DataSourceName="WebFormsIdentityDatabase.dbo.partner_indicator_results" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@partner_report_id" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="partner_report_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable3TableAdapter" GeneratorDataComponentClassName="DataTable3TableAdapter" Name="DataTable3" UserDataComponentName="DataTable3TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        project_risk_report.project_risk_id, project_risk.risk, project_risk_report.partner_report_id, project_risk_report.project_id, project_risk_report.report_period_id, project_risk_report.year_id, project_risk_report.response, 
+                         project_risk_report.comment, project_risk_report.attachment
+FROM            project_risk RIGHT OUTER JOIN
+                         project_risk_report ON project_risk.risk_id = project_risk_report.risk_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="project_risk_id" DataSetColumn="project_risk_id" />
+              <Mapping SourceColumn="risk" DataSetColumn="risk" />
+              <Mapping SourceColumn="partner_report_id" DataSetColumn="partner_report_id" />
+              <Mapping SourceColumn="project_id" DataSetColumn="project_id" />
+              <Mapping SourceColumn="report_period_id" DataSetColumn="report_period_id" />
+              <Mapping SourceColumn="year_id" DataSetColumn="year_id" />
+              <Mapping SourceColumn="response" DataSetColumn="response" />
+              <Mapping SourceColumn="comment" DataSetColumn="comment" />
+              <Mapping SourceColumn="attachment" DataSetColumn="attachment" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByPartnerReportId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByPartnerReportId" GeneratorSourceName="FillByPartnerReportId" GetMethodModifier="Public" GetMethodName="GetDataByPartnerReportId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByPartnerReportId" UserSourceName="FillByPartnerReportId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        project_risk_report.project_risk_id, project_risk.risk, project_risk_report.partner_report_id, project_risk_report.project_id, project_risk_report.report_period_id, project_risk_report.year_id, project_risk_report.response, 
+                         project_risk_report.comment, project_risk_report.attachment
+FROM            project_risk RIGHT OUTER JOIN
+                         project_risk_report ON project_risk.risk_id = project_risk_report.risk_id
+WHERE        (project_risk_report.partner_report_id = @partner_report_id) OR
+                         (project_risk_report.partner_report_id IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="partner_report_id" ColumnName="partner_report_id" DataSourceName="WebFormsIdentityDatabase.dbo.project_risk_report" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@partner_report_id" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="partner_report_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportData_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportData_DataSet" msprop:Generator_UserDSName="ReportData_DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable_ReportData" msprop:Generator_TableClassName="DataTable_ReportDataDataTable" msprop:Generator_TableVarName="tableDataTable_ReportData" msprop:Generator_RowChangedName="DataTable_ReportDataRowChanged" msprop:Generator_TablePropName="DataTable_ReportData" msprop:Generator_RowDeletingName="DataTable_ReportDataRowDeleting" msprop:Generator_RowChangingName="DataTable_ReportDataRowChanging" msprop:Generator_RowEvHandlerName="DataTable_ReportDataRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable_ReportDataRowDeleted" msprop:Generator_RowClassName="DataTable_ReportDataRow" msprop:Generator_UserTableName="DataTable_ReportData" msprop:Generator_RowEvArgName="DataTable_ReportDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="partner_report_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="project_id" msprop:Generator_ColumnVarNameInTable="columnproject_id" msprop:Generator_ColumnPropNameInRow="project_id" msprop:Generator_ColumnPropNameInTable="project_idColumn" msprop:Generator_UserColumnName="project_id" type="xs:int" />
+              <xs:element name="report_period_id" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" />
+              <xs:element name="year_id" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" />
+              <xs:element name="project_name" msprop:Generator_ColumnVarNameInTable="columnproject_name" msprop:Generator_ColumnPropNameInRow="project_name" msprop:Generator_ColumnPropNameInTable="project_nameColumn" msprop:Generator_UserColumnName="project_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="implementing_partner" msprop:Generator_ColumnVarNameInTable="columnimplementing_partner" msprop:Generator_ColumnPropNameInRow="implementing_partner" msprop:Generator_ColumnPropNameInTable="implementing_partnerColumn" msprop:Generator_UserColumnName="implementing_partner" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="acronym" msprop:Generator_ColumnVarNameInTable="columnacronym" msprop:Generator_ColumnPropNameInRow="acronym" msprop:Generator_ColumnPropNameInTable="acronymColumn" msprop:Generator_UserColumnName="acronym" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="partnership_reference_number" msprop:Generator_ColumnVarNameInTable="columnpartnership_reference_number" msprop:Generator_ColumnPropNameInRow="partnership_reference_number" msprop:Generator_ColumnPropNameInTable="partnership_reference_numberColumn" msprop:Generator_UserColumnName="partnership_reference_number" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="project_objectives" msprop:Generator_ColumnVarNameInTable="columnproject_objectives" msprop:Generator_ColumnPropNameInRow="project_objectives" msprop:Generator_ColumnPropNameInTable="project_objectivesColumn" msprop:Generator_UserColumnName="project_objectives" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="expected_outcomes" msprop:Generator_ColumnVarNameInTable="columnexpected_outcomes" msprop:Generator_ColumnPropNameInRow="expected_outcomes" msprop:Generator_ColumnPropNameInTable="expected_outcomesColumn" msprop:Generator_UserColumnName="expected_outcomes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="period_name" msprop:Generator_ColumnVarNameInTable="columnperiod_name" msprop:Generator_ColumnPropNameInRow="period_name" msprop:Generator_ColumnPropNameInTable="period_nameColumn" msprop:Generator_UserColumnName="period_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="partner_reports" msprop:Generator_TableClassName="partner_reportsDataTable" msprop:Generator_TableVarName="tablepartner_reports" msprop:Generator_TablePropName="partner_reports" msprop:Generator_RowDeletingName="partner_reportsRowDeleting" msprop:Generator_RowChangingName="partner_reportsRowChanging" msprop:Generator_RowEvHandlerName="partner_reportsRowChangeEventHandler" msprop:Generator_RowDeletedName="partner_reportsRowDeleted" msprop:Generator_UserTableName="partner_reports" msprop:Generator_RowChangedName="partner_reportsRowChanged" msprop:Generator_RowEvArgName="partner_reportsRowChangeEvent" msprop:Generator_RowClassName="partner_reportsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="partner_report_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="achievements" msprop:Generator_ColumnVarNameInTable="columnachievements" msprop:Generator_ColumnPropNameInRow="achievements" msprop:Generator_ColumnPropNameInTable="achievementsColumn" msprop:Generator_UserColumnName="achievements" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lessons_learned" msprop:Generator_ColumnVarNameInTable="columnlessons_learned" msprop:Generator_ColumnPropNameInRow="lessons_learned" msprop:Generator_ColumnPropNameInTable="lessons_learnedColumn" msprop:Generator_UserColumnName="lessons_learned" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="next_steps" msprop:Generator_ColumnVarNameInTable="columnnext_steps" msprop:Generator_ColumnPropNameInRow="next_steps" msprop:Generator_ColumnPropNameInTable="next_stepsColumn" msprop:Generator_UserColumnName="next_steps" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="achievements_attachment" msprop:Generator_ColumnVarNameInTable="columnachievements_attachment" msprop:Generator_ColumnPropNameInRow="achievements_attachment" msprop:Generator_ColumnPropNameInTable="achievements_attachmentColumn" msprop:Generator_UserColumnName="achievements_attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lessons_learned_attachment" msprop:Generator_ColumnVarNameInTable="columnlessons_learned_attachment" msprop:Generator_ColumnPropNameInRow="lessons_learned_attachment" msprop:Generator_ColumnPropNameInTable="lessons_learned_attachmentColumn" msprop:Generator_UserColumnName="lessons_learned_attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="next_steps_attachment" msprop:Generator_ColumnVarNameInTable="columnnext_steps_attachment" msprop:Generator_ColumnPropNameInRow="next_steps_attachment" msprop:Generator_ColumnPropNameInTable="next_steps_attachmentColumn" msprop:Generator_UserColumnName="next_steps_attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cumulative_expenditure" msprop:Generator_ColumnVarNameInTable="columncumulative_expenditure" msprop:Generator_ColumnPropNameInRow="cumulative_expenditure" msprop:Generator_ColumnPropNameInTable="cumulative_expenditureColumn" msprop:Generator_UserColumnName="cumulative_expenditure" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cumulative_expenditure_attachment" msprop:Generator_ColumnVarNameInTable="columncumulative_expenditure_attachment" msprop:Generator_ColumnPropNameInRow="cumulative_expenditure_attachment" msprop:Generator_ColumnPropNameInTable="cumulative_expenditure_attachmentColumn" msprop:Generator_UserColumnName="cumulative_expenditure_attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="budget" msprop:Generator_ColumnVarNameInTable="columnbudget" msprop:Generator_ColumnPropNameInRow="budget" msprop:Generator_ColumnPropNameInTable="budgetColumn" msprop:Generator_UserColumnName="budget" type="xs:decimal" minOccurs="0" />
+              <xs:element name="project_id" msprop:Generator_ColumnVarNameInTable="columnproject_id" msprop:Generator_ColumnPropNameInRow="project_id" msprop:Generator_ColumnPropNameInTable="project_idColumn" msprop:Generator_UserColumnName="project_id" type="xs:int" />
+              <xs:element name="report_period_id" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" />
+              <xs:element name="year_id" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" />
+              <xs:element name="draft" msprop:Generator_ColumnVarNameInTable="columndraft" msprop:Generator_ColumnPropNameInRow="draft" msprop:Generator_ColumnPropNameInTable="draftColumn" msprop:Generator_UserColumnName="draft" type="xs:boolean" />
+              <xs:element name="saved" msprop:Generator_ColumnVarNameInTable="columnsaved" msprop:Generator_ColumnPropNameInRow="saved" msprop:Generator_ColumnPropNameInTable="savedColumn" msprop:Generator_UserColumnName="saved" type="xs:boolean" minOccurs="0" />
+              <xs:element name="submitted" msprop:Generator_ColumnVarNameInTable="columnsubmitted" msprop:Generator_ColumnPropNameInRow="submitted" msprop:Generator_ColumnPropNameInTable="submittedColumn" msprop:Generator_UserColumnName="submitted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="approved" msprop:Generator_ColumnVarNameInTable="columnapproved" msprop:Generator_ColumnPropNameInRow="approved" msprop:Generator_ColumnPropNameInTable="approvedColumn" msprop:Generator_UserColumnName="approved" type="xs:boolean" minOccurs="0" />
+              <xs:element name="archived" msprop:Generator_ColumnVarNameInTable="columnarchived" msprop:Generator_ColumnPropNameInRow="archived" msprop:Generator_ColumnPropNameInTable="archivedColumn" msprop:Generator_UserColumnName="archived" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="partner_challenges" msprop:Generator_TableClassName="partner_challengesDataTable" msprop:Generator_TableVarName="tablepartner_challenges" msprop:Generator_TablePropName="partner_challenges" msprop:Generator_RowDeletingName="partner_challengesRowDeleting" msprop:Generator_RowChangingName="partner_challengesRowChanging" msprop:Generator_RowEvHandlerName="partner_challengesRowChangeEventHandler" msprop:Generator_RowDeletedName="partner_challengesRowDeleted" msprop:Generator_UserTableName="partner_challenges" msprop:Generator_RowChangedName="partner_challengesRowChanged" msprop:Generator_RowEvArgName="partner_challengesRowChangeEvent" msprop:Generator_RowClassName="partner_challengesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="challenge_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnchallenge_id" msprop:Generator_ColumnPropNameInRow="challenge_id" msprop:Generator_ColumnPropNameInTable="challenge_idColumn" msprop:Generator_UserColumnName="challenge_id" type="xs:int" />
+              <xs:element name="partner_report_id" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="project_id" msprop:Generator_ColumnVarNameInTable="columnproject_id" msprop:Generator_ColumnPropNameInRow="project_id" msprop:Generator_ColumnPropNameInTable="project_idColumn" msprop:Generator_UserColumnName="project_id" type="xs:int" />
+              <xs:element name="report_period_id" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" />
+              <xs:element name="year_id" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" />
+              <xs:element name="challenge" msprop:Generator_ColumnVarNameInTable="columnchallenge" msprop:Generator_ColumnPropNameInRow="challenge" msprop:Generator_ColumnPropNameInTable="challengeColumn" msprop:Generator_UserColumnName="challenge" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="effect_on_implementation" msprop:Generator_ColumnVarNameInTable="columneffect_on_implementation" msprop:Generator_ColumnPropNameInRow="effect_on_implementation" msprop:Generator_ColumnPropNameInTable="effect_on_implementationColumn" msprop:Generator_UserColumnName="effect_on_implementation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mitigative_strategy" msprop:Generator_ColumnVarNameInTable="columnmitigative_strategy" msprop:Generator_ColumnPropNameInRow="mitigative_strategy" msprop:Generator_ColumnPropNameInTable="mitigative_strategyColumn" msprop:Generator_UserColumnName="mitigative_strategy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="attachment" msprop:Generator_ColumnVarNameInTable="columnattachment" msprop:Generator_ColumnPropNameInRow="attachment" msprop:Generator_ColumnPropNameInTable="attachmentColumn" msprop:Generator_UserColumnName="attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="project_overall_rating_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnproject_overall_rating_id" msprop:Generator_ColumnPropNameInRow="project_overall_rating_id" msprop:Generator_ColumnPropNameInTable="project_overall_rating_idColumn" msprop:Generator_UserColumnName="project_overall_rating_id" type="xs:int" />
+              <xs:element name="partner_report_id" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="project_id" msprop:Generator_ColumnVarNameInTable="columnproject_id" msprop:Generator_ColumnPropNameInRow="project_id" msprop:Generator_ColumnPropNameInTable="project_idColumn" msprop:Generator_UserColumnName="project_id" type="xs:int" />
+              <xs:element name="report_period_id" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" />
+              <xs:element name="year_id" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" />
+              <xs:element name="comment" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_UserColumnName="comment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rating" msprop:Generator_ColumnVarNameInTable="columnrating" msprop:Generator_ColumnPropNameInRow="rating" msprop:Generator_ColumnPropNameInTable="ratingColumn" msprop:Generator_UserColumnName="rating">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rating_id" msprop:Generator_ColumnVarNameInTable="columnrating_id" msprop:Generator_ColumnPropNameInRow="rating_id" msprop:Generator_ColumnPropNameInTable="rating_idColumn" msprop:Generator_UserColumnName="rating_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowClassName="DataTable2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="partner_indicator_result_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpartner_indicator_result_id" msprop:Generator_ColumnPropNameInRow="partner_indicator_result_id" msprop:Generator_ColumnPropNameInTable="partner_indicator_result_idColumn" msprop:Generator_UserColumnName="partner_indicator_result_id" type="xs:int" />
+              <xs:element name="partner_report_id" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="partner_indicator_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpartner_indicator_id" msprop:Generator_ColumnPropNameInRow="partner_indicator_id" msprop:Generator_ColumnPropNameInTable="partner_indicator_idColumn" msprop:Generator_UserColumnName="partner_indicator_id" type="xs:int" minOccurs="0" />
+              <xs:element name="indicator" msprop:Generator_ColumnVarNameInTable="columnindicator" msprop:Generator_ColumnPropNameInRow="indicator" msprop:Generator_ColumnPropNameInTable="indicatorColumn" msprop:Generator_UserColumnName="indicator" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="target" msprop:Generator_ColumnVarNameInTable="columntarget" msprop:Generator_ColumnPropNameInRow="target" msprop:Generator_ColumnPropNameInTable="targetColumn" msprop:Generator_UserColumnName="target" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="report_period_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" minOccurs="0" />
+              <xs:element name="period_name" msprop:Generator_ColumnVarNameInTable="columnperiod_name" msprop:Generator_ColumnPropNameInRow="period_name" msprop:Generator_ColumnPropNameInTable="period_nameColumn" msprop:Generator_UserColumnName="period_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="year_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" minOccurs="0" />
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:int" minOccurs="0" />
+              <xs:element name="result" msprop:Generator_ColumnVarNameInTable="columnresult" msprop:Generator_ColumnPropNameInRow="result" msprop:Generator_ColumnPropNameInTable="resultColumn" msprop:Generator_UserColumnName="result" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comment" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_UserColumnName="comment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="disaggregation" msprop:Generator_ColumnVarNameInTable="columndisaggregation" msprop:Generator_ColumnPropNameInRow="disaggregation" msprop:Generator_ColumnPropNameInTable="disaggregationColumn" msprop:Generator_UserColumnName="disaggregation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="q_target" msprop:Generator_ColumnVarNameInTable="columnq_target" msprop:Generator_ColumnPropNameInRow="q_target" msprop:Generator_ColumnPropNameInTable="q_targetColumn" msprop:Generator_UserColumnName="q_target" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="disaggregation_foreign_id" msprop:Generator_ColumnVarNameInTable="columndisaggregation_foreign_id" msprop:Generator_ColumnPropNameInRow="disaggregation_foreign_id" msprop:Generator_ColumnPropNameInTable="disaggregation_foreign_idColumn" msprop:Generator_UserColumnName="disaggregation_foreign_id" type="xs:int" minOccurs="0" />
+              <xs:element name="indicator_disaggregation_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnindicator_disaggregation_id" msprop:Generator_ColumnPropNameInRow="indicator_disaggregation_id" msprop:Generator_ColumnPropNameInTable="indicator_disaggregation_idColumn" msprop:Generator_UserColumnName="indicator_disaggregation_id" type="xs:int" minOccurs="0" />
+              <xs:element name="indicator_disaggregation_result_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnindicator_disaggregation_result_id" msprop:Generator_ColumnPropNameInRow="indicator_disaggregation_result_id" msprop:Generator_ColumnPropNameInTable="indicator_disaggregation_result_idColumn" msprop:Generator_UserColumnName="indicator_disaggregation_result_id" type="xs:int" minOccurs="0" />
+              <xs:element name="disaggregation_result" msprop:Generator_ColumnVarNameInTable="columndisaggregation_result" msprop:Generator_ColumnPropNameInRow="disaggregation_result" msprop:Generator_ColumnPropNameInTable="disaggregation_resultColumn" msprop:Generator_UserColumnName="disaggregation_result" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="disaggregation_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columndisaggregation_id" msprop:Generator_ColumnPropNameInRow="disaggregation_id" msprop:Generator_ColumnPropNameInTable="disaggregation_idColumn" msprop:Generator_UserColumnName="disaggregation_id" type="xs:int" minOccurs="0" />
+              <xs:element name="disaggregation_self_id" msprop:Generator_ColumnVarNameInTable="columndisaggregation_self_id" msprop:Generator_ColumnPropNameInRow="disaggregation_self_id" msprop:Generator_ColumnPropNameInTable="disaggregation_self_idColumn" msprop:Generator_UserColumnName="disaggregation_self_id" type="xs:int" minOccurs="0" />
+              <xs:element name="disaggregation_name" msprop:Generator_ColumnVarNameInTable="columndisaggregation_name" msprop:Generator_ColumnPropNameInRow="disaggregation_name" msprop:Generator_ColumnPropNameInTable="disaggregation_nameColumn" msprop:Generator_UserColumnName="disaggregation_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="parent_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnparent_id" msprop:Generator_ColumnPropNameInRow="parent_id" msprop:Generator_ColumnPropNameInTable="parent_idColumn" msprop:Generator_UserColumnName="parent_id" type="xs:int" minOccurs="0" />
+              <xs:element name="parent_name" msprop:Generator_ColumnVarNameInTable="columnparent_name" msprop:Generator_ColumnPropNameInRow="parent_name" msprop:Generator_ColumnPropNameInTable="parent_nameColumn" msprop:Generator_UserColumnName="parent_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="child_id" msprop:Generator_ColumnVarNameInTable="columnchild_id" msprop:Generator_ColumnPropNameInRow="child_id" msprop:Generator_ColumnPropNameInTable="child_idColumn" msprop:Generator_UserColumnName="child_id" type="xs:int" minOccurs="0" />
+              <xs:element name="second_parent_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnsecond_parent_id" msprop:Generator_ColumnPropNameInRow="second_parent_id" msprop:Generator_ColumnPropNameInTable="second_parent_idColumn" msprop:Generator_UserColumnName="second_parent_id" type="xs:int" minOccurs="0" />
+              <xs:element name="second_child_id" msprop:Generator_ColumnVarNameInTable="columnsecond_child_id" msprop:Generator_ColumnPropNameInRow="second_child_id" msprop:Generator_ColumnPropNameInTable="second_child_idColumn" msprop:Generator_UserColumnName="second_child_id" type="xs:int" minOccurs="0" />
+              <xs:element name="second_parent_name" msprop:Generator_ColumnVarNameInTable="columnsecond_parent_name" msprop:Generator_ColumnPropNameInRow="second_parent_name" msprop:Generator_ColumnPropNameInTable="second_parent_nameColumn" msprop:Generator_UserColumnName="second_parent_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="attachment" msprop:Generator_ColumnVarNameInTable="columnattachment" msprop:Generator_ColumnPropNameInRow="attachment" msprop:Generator_ColumnPropNameInTable="attachmentColumn" msprop:Generator_UserColumnName="attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable3" msprop:Generator_TableClassName="DataTable3DataTable" msprop:Generator_TableVarName="tableDataTable3" msprop:Generator_RowChangedName="DataTable3RowChanged" msprop:Generator_TablePropName="DataTable3" msprop:Generator_RowDeletingName="DataTable3RowDeleting" msprop:Generator_RowChangingName="DataTable3RowChanging" msprop:Generator_RowEvHandlerName="DataTable3RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable3RowDeleted" msprop:Generator_RowClassName="DataTable3Row" msprop:Generator_UserTableName="DataTable3" msprop:Generator_RowEvArgName="DataTable3RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="project_risk_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnproject_risk_id" msprop:Generator_ColumnPropNameInRow="project_risk_id" msprop:Generator_ColumnPropNameInTable="project_risk_idColumn" msprop:Generator_UserColumnName="project_risk_id" type="xs:int" />
+              <xs:element name="risk" msprop:Generator_ColumnVarNameInTable="columnrisk" msprop:Generator_ColumnPropNameInRow="risk" msprop:Generator_ColumnPropNameInTable="riskColumn" msprop:Generator_UserColumnName="risk" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="partner_report_id" msprop:Generator_ColumnVarNameInTable="columnpartner_report_id" msprop:Generator_ColumnPropNameInRow="partner_report_id" msprop:Generator_ColumnPropNameInTable="partner_report_idColumn" msprop:Generator_UserColumnName="partner_report_id" type="xs:long" />
+              <xs:element name="project_id" msprop:Generator_ColumnVarNameInTable="columnproject_id" msprop:Generator_ColumnPropNameInRow="project_id" msprop:Generator_ColumnPropNameInTable="project_idColumn" msprop:Generator_UserColumnName="project_id" type="xs:int" />
+              <xs:element name="report_period_id" msprop:Generator_ColumnVarNameInTable="columnreport_period_id" msprop:Generator_ColumnPropNameInRow="report_period_id" msprop:Generator_ColumnPropNameInTable="report_period_idColumn" msprop:Generator_UserColumnName="report_period_id" type="xs:int" />
+              <xs:element name="year_id" msprop:Generator_ColumnVarNameInTable="columnyear_id" msprop:Generator_ColumnPropNameInRow="year_id" msprop:Generator_ColumnPropNameInTable="year_idColumn" msprop:Generator_UserColumnName="year_id" type="xs:int" />
+              <xs:element name="response" msprop:Generator_ColumnVarNameInTable="columnresponse" msprop:Generator_ColumnPropNameInRow="response" msprop:Generator_ColumnPropNameInTable="responseColumn" msprop:Generator_UserColumnName="response" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comment" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_UserColumnName="comment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="attachment" msprop:Generator_ColumnVarNameInTable="columnattachment" msprop:Generator_ColumnPropNameInRow="attachment" msprop:Generator_ColumnPropNameInTable="attachmentColumn" msprop:Generator_UserColumnName="attachment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable_ReportData" />
+      <xs:field xpath="mstns:partner_report_id" />
+    </xs:unique>
+    <xs:unique name="partner_reports_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:partner_reports" />
+      <xs:field xpath="mstns:partner_report_id" />
+    </xs:unique>
+    <xs:unique name="partner_challenges_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:partner_challenges" />
+      <xs:field xpath="mstns:challenge_id" />
+    </xs:unique>
+    <xs:unique name="DataTable1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:project_overall_rating_id" />
+    </xs:unique>
+    <xs:unique name="DataTable3_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable3" />
+      <xs:field xpath="mstns:project_risk_id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_partner_challenges_partner_reports" msdata:parent="partner_reports" msdata:child="partner_challenges" msdata:parentkey="partner_report_id" msdata:childkey="partner_report_id" msprop:Generator_UserChildTable="partner_challenges" msprop:Generator_ChildPropName="Getpartner_challengesRows" msprop:Generator_UserRelationName="FK_partner_challenges_partner_reports" msprop:Generator_ParentPropName="partner_reportsRow" msprop:Generator_RelationVarName="relationFK_partner_challenges_partner_reports" msprop:Generator_UserParentTable="partner_reports" />
+      <msdata:Relationship name="FK_project_overall_rating_partner_reports" msdata:parent="partner_reports" msdata:child="DataTable1" msdata:parentkey="partner_report_id" msdata:childkey="partner_report_id" msprop:Generator_UserChildTable="DataTable1" msprop:Generator_ChildPropName="GetDataTable1Rows" msprop:Generator_UserRelationName="FK_project_overall_rating_partner_reports" msprop:Generator_ParentPropName="partner_reportsRow" msprop:Generator_RelationVarName="relationFK_project_overall_rating_partner_reports" msprop:Generator_UserParentTable="partner_reports" />
+      <msdata:Relationship name="FK_partner_indicator_results_partner_reports" msdata:parent="partner_reports" msdata:child="DataTable2" msdata:parentkey="partner_report_id" msdata:childkey="partner_report_id" msprop:Generator_UserChildTable="DataTable2" msprop:Generator_ChildPropName="GetDataTable2Rows" msprop:Generator_UserRelationName="FK_partner_indicator_results_partner_reports" msprop:Generator_ParentPropName="partner_reportsRow" msprop:Generator_RelationVarName="relationFK_partner_indicator_results_partner_reports" msprop:Generator_UserParentTable="partner_reports" />
+      <msdata:Relationship name="FK_project_risk_partner_reports" msdata:parent="partner_reports" msdata:child="DataTable3" msdata:parentkey="partner_report_id" msdata:childkey="partner_report_id" msprop:Generator_UserChildTable="DataTable3" msprop:Generator_ChildPropName="GetDataTable3Rows" msprop:Generator_UserRelationName="FK_project_risk_partner_reports" msprop:Generator_RelationVarName="relationFK_project_risk_partner_reports" msprop:Generator_UserParentTable="partner_reports" msprop:Generator_ParentPropName="partner_reportsRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

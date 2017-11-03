@@ -1,0 +1,2347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebFormsIdentityDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="disaggregation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="disaggregation_id" Type="int" />
+          <Property Name="disaggregation_name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fsda_indicators">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fsda_indicator_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="indicator" Type="text" />
+        </EntityType>
+        <EntityType Name="indicator_report_planner">
+          <Key>
+            <PropertyRef Name="partner_indicator_id" />
+            <PropertyRef Name="report_period_id" />
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="partner_indicator_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="q_target" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="indicator_types">
+          <Key>
+            <PropertyRef Name="indicator_type_id" />
+          </Key>
+          <Property Name="indicator_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="indicator_type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="partner_challenges">
+          <Key>
+            <PropertyRef Name="challenge_id" />
+          </Key>
+          <Property Name="challenge_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="challenge" Type="text" />
+          <Property Name="effect_on_implementation" Type="text" />
+          <Property Name="mitigative_strategy" Type="text" />
+          <Property Name="attachment" Type="text" />
+        </EntityType>
+        <EntityType Name="partner_indicator_results">
+          <Key>
+            <PropertyRef Name="partner_indicator_result_id" />
+          </Key>
+          <Property Name="partner_indicator_result_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="partner_indicator_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="result" Type="varchar(max)" />
+          <Property Name="comment" Type="text" />
+          <Property Name="attachment" Type="text" />
+          <Property Name="disaggregation" Type="text" />
+        </EntityType>
+        <EntityType Name="partner_indicators">
+          <Key>
+            <PropertyRef Name="partner_indicator_id" />
+          </Key>
+          <Property Name="partner_indicator_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="indicator_type_id" Type="int" />
+          <Property Name="fsda_indicator_id" Type="int" />
+          <Property Name="indicator" Type="text" Nullable="false" />
+          <Property Name="target" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="partner_reports">
+          <Key>
+            <PropertyRef Name="partner_report_id" />
+          </Key>
+          <Property Name="partner_report_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="draft" Type="bit" Nullable="false" />
+          <Property Name="achievements" Type="text" />
+          <Property Name="achievements_attachment" Type="varchar(max)" />
+          <Property Name="lessons_learned" Type="text" />
+          <Property Name="lessons_learned_attachment" Type="varchar(max)" />
+          <Property Name="next_steps" Type="text" />
+          <Property Name="next_steps_attachment" Type="varchar(max)" />
+          <Property Name="saved" Type="bit" />
+          <Property Name="submitted" Type="bit" />
+          <Property Name="approved" Type="bit" />
+          <Property Name="archived" Type="bit" />
+          <Property Name="cumulative_expenditure" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cumulative_expenditure_attachment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="pillars">
+          <Key>
+            <PropertyRef Name="pillar_id" />
+          </Key>
+          <Property Name="pillar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="project_indicator_disaggregation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_indicator_id" Type="int" Nullable="false" />
+          <Property Name="disaggregation_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_indicator_disaggregation_result">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_indicator_disaggregation_id" Type="int" Nullable="false" />
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="disaggregation_result" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="project_overall_rating">
+          <Key>
+            <PropertyRef Name="project_overall_rating_id" />
+          </Key>
+          <Property Name="project_overall_rating_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="rating_id" Type="int" Nullable="false" />
+          <Property Name="comment" Type="text" />
+        </EntityType>
+        <EntityType Name="project_rating">
+          <Key>
+            <PropertyRef Name="rating_id" />
+          </Key>
+          <Property Name="rating_id" Type="int" Nullable="false" />
+          <Property Name="rating" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_risk">
+          <Key>
+            <PropertyRef Name="risk_id" />
+          </Key>
+          <Property Name="risk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="risk" Type="varchar(max)" Nullable="false" />
+          <Property Name="is_general_risk" Type="bit" Nullable="false" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_risk_report">
+          <Key>
+            <PropertyRef Name="project_risk_id" />
+          </Key>
+          <Property Name="project_risk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="risk_id" Type="int" Nullable="false" />
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="response" Type="varchar" MaxLength="50" />
+          <Property Name="comment" Type="varchar(max)" />
+          <Property Name="attachment" Type="text" />
+        </EntityType>
+        <EntityType Name="project_status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="projects">
+          <Key>
+            <PropertyRef Name="project_id" />
+          </Key>
+          <Property Name="project_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pillar_id" Type="int" Nullable="false" />
+          <Property Name="project_name" Type="varchar(max)" />
+          <Property Name="implementing_partner" Type="varchar(max)" />
+          <Property Name="acronym" Type="varchar(max)" />
+          <Property Name="partnership_reference_number" Type="varchar(max)" />
+          <Property Name="project_objectives" Type="text" />
+          <Property Name="expected_outcomes" Type="text" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="budget" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="report_periods">
+          <Key>
+            <PropertyRef Name="report_period_id" />
+          </Key>
+          <Property Name="report_period_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="period" Type="varchar" MaxLength="50" />
+          <Property Name="period_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="years">
+          <Key>
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="year_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebFormsIdentityDatabase.dbo.AspNetUserRolesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserRolesView">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebFormsIdentityDatabase.dbo.Report_Data_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Report_Data_View">
+          <Key>
+            <PropertyRef Name="partner_report_id" />
+            <PropertyRef Name="project_id" />
+            <PropertyRef Name="report_period_id" />
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="partner_report_id" Type="bigint" Nullable="false" />
+          <Property Name="project_name" Type="varchar(max)" />
+          <Property Name="implementing_partner" Type="varchar(max)" />
+          <Property Name="acronym" Type="varchar(max)" />
+          <Property Name="partnership_reference_number" Type="varchar(max)" />
+          <Property Name="project_objectives" Type="text" />
+          <Property Name="expected_outcomes" Type="text" />
+          <Property Name="period_name" Type="varchar" MaxLength="50" />
+          <Property Name="year" Type="int" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="report_period_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_disaggregation_disaggregation">
+          <End Role="disaggregation" Type="Self.disaggregation" Multiplicity="0..1" />
+          <End Role="disaggregation1" Type="Self.disaggregation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="disaggregation1">
+              <PropertyRef Name="disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indicator_report_planner_partner_indicators">
+          <End Role="partner_indicators" Type="Self.partner_indicators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="indicator_report_planner" Type="Self.indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_indicators">
+              <PropertyRef Name="partner_indicator_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="partner_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indicator_report_planner_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="indicator_report_planner" Type="Self.indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indicator_report_planner_years">
+          <End Role="years" Type="Self.years" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="indicator_report_planner" Type="Self.indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_partner_reports">
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_challenges" Type="Self.partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="1" />
+          <End Role="partner_challenges" Type="Self.partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_challenges" Type="Self.partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_years">
+          <End Role="years" Type="Self.years" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_challenges" Type="Self.partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_indicator_results_partner_reports">
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_indicator_results" Type="Self.partner_indicator_results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="partner_indicator_results">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_indicators_fsda_indicators">
+          <End Role="fsda_indicators" Type="Self.fsda_indicators" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_indicators" Type="Self.partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fsda_indicators">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="fsda_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_indicators_indicator_types">
+          <End Role="indicator_types" Type="Self.indicator_types" Multiplicity="0..1" />
+          <End Role="partner_indicators" Type="Self.partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indicator_types">
+              <PropertyRef Name="indicator_type_id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="indicator_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_indicators_projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_indicators" Type="Self.partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1" />
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_years">
+          <End Role="years" Type="Self.years" Multiplicity="1" />
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_disaggregation">
+          <End Role="disaggregation" Type="Self.disaggregation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_indicator_disaggregation" Type="Self.project_indicator_disaggregation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation">
+              <PropertyRef Name="disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_partner_indicators">
+          <End Role="partner_indicators" Type="Self.partner_indicators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_indicator_disaggregation" Type="Self.project_indicator_disaggregation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_indicators">
+              <PropertyRef Name="partner_indicator_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation">
+              <PropertyRef Name="project_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_partner_reports">
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_indicator_disaggregation_result" Type="Self.project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_project_indicator_disaggregation">
+          <End Role="project_indicator_disaggregation" Type="Self.project_indicator_disaggregation" Multiplicity="1" />
+          <End Role="project_indicator_disaggregation_result" Type="Self.project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_indicator_disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="project_indicator_disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1" />
+          <End Role="project_indicator_disaggregation_result" Type="Self.project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_years">
+          <End Role="years" Type="Self.years" Multiplicity="1" />
+          <End Role="project_indicator_disaggregation_result" Type="Self.project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_partner_reports">
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_overall_rating" Type="Self.project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_project_rating">
+          <End Role="project_rating" Type="Self.project_rating" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_overall_rating" Type="Self.project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_rating">
+              <PropertyRef Name="rating_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="rating_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="1" />
+          <End Role="project_overall_rating" Type="Self.project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1" />
+          <End Role="project_overall_rating" Type="Self.project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_years">
+          <End Role="years" Type="Self.years" Multiplicity="1" />
+          <End Role="project_overall_rating" Type="Self.project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_general_risk">
+          <End Role="project_risk" Type="Self.project_risk" Multiplicity="1" />
+          <End Role="project_risk_report" Type="Self.project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_risk">
+              <PropertyRef Name="risk_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="risk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_partner_reports">
+          <End Role="partner_reports" Type="Self.partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_risk_report" Type="Self.project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="1" />
+          <End Role="project_risk_report" Type="Self.project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_projects1">
+          <End Role="projects" Type="Self.projects" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="project_risk" Type="Self.project_risk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_risk">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_report_periods">
+          <End Role="report_periods" Type="Self.report_periods" Multiplicity="1" />
+          <End Role="project_risk_report" Type="Self.project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_years">
+          <End Role="years" Type="Self.years" Multiplicity="1" />
+          <End Role="project_risk_report" Type="Self.project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="years">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projects_pillars">
+          <End Role="pillars" Type="Self.pillars" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pillars">
+              <PropertyRef Name="pillar_id" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="pillar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projects_project_status">
+          <End Role="project_status" Type="Self.project_status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebFormsIdentityDatabaseModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="disaggregation" EntityType="Self.disaggregation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fsda_indicators" EntityType="Self.fsda_indicators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="indicator_report_planner" EntityType="Self.indicator_report_planner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="indicator_types" EntityType="Self.indicator_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partner_challenges" EntityType="Self.partner_challenges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partner_indicator_results" EntityType="Self.partner_indicator_results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partner_indicators" EntityType="Self.partner_indicators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partner_reports" EntityType="Self.partner_reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pillars" EntityType="Self.pillars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_indicator_disaggregation" EntityType="Self.project_indicator_disaggregation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_indicator_disaggregation_result" EntityType="Self.project_indicator_disaggregation_result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_overall_rating" EntityType="Self.project_overall_rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_rating" EntityType="Self.project_rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_risk" EntityType="Self.project_risk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_risk_report" EntityType="Self.project_risk_report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project_status" EntityType="Self.project_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projects" EntityType="Self.projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="report_periods" EntityType="Self.report_periods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="years" EntityType="Self.years" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRolesView" EntityType="Self.AspNetUserRolesView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserRolesView].[UserId] AS [UserId], 
+    [AspNetUserRolesView].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRolesView] AS [AspNetUserRolesView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Report_Data_View" EntityType="Self.Report_Data_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Report_Data_View].[partner_report_id] AS [partner_report_id], 
+    [Report_Data_View].[project_name] AS [project_name], 
+    [Report_Data_View].[implementing_partner] AS [implementing_partner], 
+    [Report_Data_View].[acronym] AS [acronym], 
+    [Report_Data_View].[partnership_reference_number] AS [partnership_reference_number], 
+    [Report_Data_View].[project_objectives] AS [project_objectives], 
+    [Report_Data_View].[expected_outcomes] AS [expected_outcomes], 
+    [Report_Data_View].[period_name] AS [period_name], 
+    [Report_Data_View].[year] AS [year], 
+    [Report_Data_View].[project_id] AS [project_id], 
+    [Report_Data_View].[report_period_id] AS [report_period_id], 
+    [Report_Data_View].[year_id] AS [year_id]
+    FROM [dbo].[Report_Data_View] AS [Report_Data_View]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_disaggregation_disaggregation" Association="Self.FK_disaggregation_disaggregation">
+            <End Role="disaggregation" EntitySet="disaggregation" />
+            <End Role="disaggregation1" EntitySet="disaggregation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indicator_report_planner_partner_indicators" Association="Self.FK_indicator_report_planner_partner_indicators">
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indicator_report_planner_report_periods" Association="Self.FK_indicator_report_planner_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indicator_report_planner_years" Association="Self.FK_indicator_report_planner_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_partner_reports" Association="Self.FK_partner_challenges_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_projects" Association="Self.FK_partner_challenges_projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_report_periods" Association="Self.FK_partner_challenges_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_years" Association="Self.FK_partner_challenges_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_indicator_results_partner_reports" Association="Self.FK_partner_indicator_results_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="partner_indicator_results" EntitySet="partner_indicator_results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_indicators_fsda_indicators" Association="Self.FK_partner_indicators_fsda_indicators">
+            <End Role="fsda_indicators" EntitySet="fsda_indicators" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_indicators_indicator_types" Association="Self.FK_partner_indicators_indicator_types">
+            <End Role="indicator_types" EntitySet="indicator_types" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_indicators_projects" Association="Self.FK_partner_indicators_projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_projects" Association="Self.FK_partner_reports_projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_report_periods" Association="Self.FK_partner_reports_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_years" Association="Self.FK_partner_reports_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_disaggregation" Association="Self.FK_project_indicator_disaggregation_disaggregation">
+            <End Role="disaggregation" EntitySet="disaggregation" />
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_partner_indicators" Association="Self.FK_project_indicator_disaggregation_partner_indicators">
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_partner_reports" Association="Self.FK_project_indicator_disaggregation_result_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_project_indicator_disaggregation" Association="Self.FK_project_indicator_disaggregation_result_project_indicator_disaggregation">
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_report_periods" Association="Self.FK_project_indicator_disaggregation_result_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_years" Association="Self.FK_project_indicator_disaggregation_result_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_partner_reports" Association="Self.FK_project_overall_rating_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_project_rating" Association="Self.FK_project_overall_rating_project_rating">
+            <End Role="project_rating" EntitySet="project_rating" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_projects" Association="Self.FK_project_overall_rating_projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_report_periods" Association="Self.FK_project_overall_rating_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_years" Association="Self.FK_project_overall_rating_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_general_risk" Association="Self.FK_project_risk_general_risk">
+            <End Role="project_risk" EntitySet="project_risk" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_partner_reports" Association="Self.FK_project_risk_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_projects" Association="Self.FK_project_risk_projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_projects1" Association="Self.FK_project_risk_projects1">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="project_risk" EntitySet="project_risk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_report_periods" Association="Self.FK_project_risk_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_years" Association="Self.FK_project_risk_years">
+            <End Role="years" EntitySet="years" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projects_pillars" Association="Self.FK_projects_pillars">
+            <End Role="pillars" EntitySet="pillars" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projects_project_status" Association="Self.FK_projects_project_status">
+            <End Role="project_status" EntitySet="project_status" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebFormsIdentityDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebFormsIdentityDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUserClaims" EntityType="WebFormsIdentityDatabaseModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="WebFormsIdentityDatabaseModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="WebFormsIdentityDatabaseModel.AspNetUser" />
+          <EntitySet Name="report_periods" EntityType="WebFormsIdentityDatabaseModel.report_periods" />
+          <EntitySet Name="years" EntityType="WebFormsIdentityDatabaseModel.year" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <EntitySet Name="indicator_report_planner" EntityType="WebFormsIdentityDatabaseModel.indicator_report_planner" />
+          <AssociationSet Name="FK_indicator_report_planner_report_periods" Association="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_indicator_report_planner_years" Association="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_years">
+            <End Role="year" EntitySet="years" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <EntitySet Name="partner_indicator_results" EntityType="WebFormsIdentityDatabaseModel.partner_indicator_results" />
+          <AssociationSet Name="FK_partner_indicator_results_indicator_report_planner" Association="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_indicator_report_planner">
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+            <End Role="partner_indicator_results" EntitySet="partner_indicator_results" />
+          </AssociationSet>
+          <EntitySet Name="partner_indicators" EntityType="WebFormsIdentityDatabaseModel.partner_indicators" />
+          <AssociationSet Name="FK_indicator_report_planner_partner_indicators" Association="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_partner_indicators">
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+            <End Role="indicator_report_planner" EntitySet="indicator_report_planner" />
+          </AssociationSet>
+          <EntitySet Name="pillars" EntityType="WebFormsIdentityDatabaseModel.pillar" />
+          <EntitySet Name="project_status" EntityType="WebFormsIdentityDatabaseModel.project_status" />
+          <EntitySet Name="projects" EntityType="WebFormsIdentityDatabaseModel.project" />
+          <AssociationSet Name="FK_partner_indicators_projects" Association="WebFormsIdentityDatabaseModel.FK_partner_indicators_projects">
+            <End Role="project" EntitySet="projects" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projects_pillars" Association="WebFormsIdentityDatabaseModel.FK_projects_pillars">
+            <End Role="pillar" EntitySet="pillars" />
+            <End Role="project" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projects_project_status" Association="WebFormsIdentityDatabaseModel.FK_projects_project_status">
+            <End Role="project_status" EntitySet="project_status" />
+            <End Role="project" EntitySet="projects" />
+          </AssociationSet>
+          <EntitySet Name="partner_challenges" EntityType="WebFormsIdentityDatabaseModel.partner_challenges" />
+          <AssociationSet Name="FK_partner_challenges_projects" Association="WebFormsIdentityDatabaseModel.FK_partner_challenges_projects">
+            <End Role="project" EntitySet="projects" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_report_periods" Association="WebFormsIdentityDatabaseModel.FK_partner_challenges_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_challenges_years" Association="WebFormsIdentityDatabaseModel.FK_partner_challenges_years">
+            <End Role="year" EntitySet="years" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <EntitySet Name="project_overall_rating" EntityType="WebFormsIdentityDatabaseModel.project_overall_rating" />
+          <EntitySet Name="project_rating" EntityType="WebFormsIdentityDatabaseModel.project_rating" />
+          <AssociationSet Name="FK_project_overall_rating_project_rating" Association="WebFormsIdentityDatabaseModel.FK_project_overall_rating_project_rating">
+            <End Role="project_rating" EntitySet="project_rating" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_projects" Association="WebFormsIdentityDatabaseModel.FK_project_overall_rating_projects">
+            <End Role="project" EntitySet="projects" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_report_periods" Association="WebFormsIdentityDatabaseModel.FK_project_overall_rating_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_years" Association="WebFormsIdentityDatabaseModel.FK_project_overall_rating_years">
+            <End Role="year" EntitySet="years" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="WebFormsIdentityDatabaseModel.AspNetRole" />
+          <AssociationSet Name="AspNetUserRoles1" Association="WebFormsIdentityDatabaseModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUserRolesViews" EntityType="WebFormsIdentityDatabaseModel.AspNetUserRolesView" />
+          <EntitySet Name="fsda_indicators" EntityType="WebFormsIdentityDatabaseModel.fsda_indicators" />
+          <AssociationSet Name="FK_partner_indicators_fsda_indicators" Association="WebFormsIdentityDatabaseModel.FK_partner_indicators_fsda_indicators">
+            <End Role="fsda_indicators" EntitySet="fsda_indicators" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <EntitySet Name="disaggregations" EntityType="WebFormsIdentityDatabaseModel.disaggregation" />
+          <AssociationSet Name="FK_disaggregation_disaggregation" Association="WebFormsIdentityDatabaseModel.FK_disaggregation_disaggregation">
+            <End Role="disaggregation" EntitySet="disaggregations" />
+            <End Role="disaggregation1" EntitySet="disaggregations" />
+          </AssociationSet>
+          <EntitySet Name="project_indicator_disaggregation" EntityType="WebFormsIdentityDatabaseModel.project_indicator_disaggregation" />
+          <AssociationSet Name="FK_project_indicator_disaggregation_disaggregation" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_disaggregation">
+            <End Role="disaggregation" EntitySet="disaggregations" />
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_partner_indicators" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_partner_indicators">
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+          </AssociationSet>
+          <EntitySet Name="project_indicator_disaggregation_result" EntityType="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result" />
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_project_indicator_disaggregation" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_project_indicator_disaggregation">
+            <End Role="project_indicator_disaggregation" EntitySet="project_indicator_disaggregation" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_report_periods" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_years" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_years">
+            <End Role="year" EntitySet="years" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <EntitySet Name="indicator_types" EntityType="WebFormsIdentityDatabaseModel.indicator_types" />
+          <AssociationSet Name="FK_partner_indicators_indicator_types" Association="WebFormsIdentityDatabaseModel.FK_partner_indicators_indicator_types">
+            <End Role="indicator_types" EntitySet="indicator_types" />
+            <End Role="partner_indicators" EntitySet="partner_indicators" />
+          </AssociationSet>
+          <EntitySet Name="Report_Data_View" EntityType="WebFormsIdentityDatabaseModel.Report_Data_View" />
+          <EntitySet Name="project_risk_report" EntityType="WebFormsIdentityDatabaseModel.project_risk_report" />
+          <AssociationSet Name="FK_project_risk_projects1" Association="WebFormsIdentityDatabaseModel.FK_project_risk_projects1">
+            <End Role="project" EntitySet="projects" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_report_periods1" Association="WebFormsIdentityDatabaseModel.FK_project_risk_report_periods1">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_years1" Association="WebFormsIdentityDatabaseModel.FK_project_risk_years1">
+            <End Role="year" EntitySet="years" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <EntitySet Name="project_risk" EntityType="WebFormsIdentityDatabaseModel.project_risk" />
+          <AssociationSet Name="FK_project_risk_general_risk" Association="WebFormsIdentityDatabaseModel.FK_project_risk_general_risk">
+            <End Role="project_risk" EntitySet="project_risk" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_projects11" Association="WebFormsIdentityDatabaseModel.FK_project_risk_projects11">
+            <End Role="project" EntitySet="projects" />
+            <End Role="project_risk" EntitySet="project_risk" />
+          </AssociationSet>
+          <EntitySet Name="partner_reports" EntityType="WebFormsIdentityDatabaseModel.partner_reports" />
+          <AssociationSet Name="FK_partner_challenges_partner_reports" Association="WebFormsIdentityDatabaseModel.FK_partner_challenges_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="partner_challenges" EntitySet="partner_challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_indicator_results_partner_reports" Association="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="partner_indicator_results" EntitySet="partner_indicator_results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_projects" Association="WebFormsIdentityDatabaseModel.FK_partner_reports_projects">
+            <End Role="project" EntitySet="projects" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_report_periods" Association="WebFormsIdentityDatabaseModel.FK_partner_reports_report_periods">
+            <End Role="report_periods" EntitySet="report_periods" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_partner_reports_years" Association="WebFormsIdentityDatabaseModel.FK_partner_reports_years">
+            <End Role="year" EntitySet="years" />
+            <End Role="partner_reports" EntitySet="partner_reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_indicator_disaggregation_result_partner_reports" Association="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_indicator_disaggregation_result" EntitySet="project_indicator_disaggregation_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_overall_rating_partner_reports" Association="WebFormsIdentityDatabaseModel.FK_project_overall_rating_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_overall_rating" EntitySet="project_overall_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_risk_partner_reports" Association="WebFormsIdentityDatabaseModel.FK_project_risk_partner_reports">
+            <End Role="partner_reports" EntitySet="partner_reports" />
+            <End Role="project_risk_report" EntitySet="project_risk_report" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="WebFormsIdentityDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="WebFormsIdentityDatabaseModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="report_periods">
+          <Key>
+            <PropertyRef Name="report_period_id" />
+          </Key>
+          <Property Name="report_period_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="period" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="period_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="indicator_report_planner" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_report_periods" FromRole="report_periods" ToRole="indicator_report_planner" />
+          <NavigationProperty Name="partner_challenges" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_report_periods" FromRole="report_periods" ToRole="partner_challenges" />
+          <NavigationProperty Name="project_overall_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_report_periods" FromRole="report_periods" ToRole="project_overall_rating" />
+          <NavigationProperty Name="project_indicator_disaggregation_result" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_report_periods" FromRole="report_periods" ToRole="project_indicator_disaggregation_result" />
+          <NavigationProperty Name="project_risk_report" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_report_periods1" FromRole="report_periods" ToRole="project_risk_report" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_report_periods" FromRole="report_periods" ToRole="partner_reports" />
+        </EntityType>
+        <EntityType Name="year">
+          <Key>
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="year_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year1" Type="Int32" />
+          <NavigationProperty Name="indicator_report_planner" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_years" FromRole="year" ToRole="indicator_report_planner" />
+          <NavigationProperty Name="partner_challenges" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_years" FromRole="year" ToRole="partner_challenges" />
+          <NavigationProperty Name="project_overall_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_years" FromRole="year" ToRole="project_overall_rating" />
+          <NavigationProperty Name="project_indicator_disaggregation_result" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_years" FromRole="year" ToRole="project_indicator_disaggregation_result" />
+          <NavigationProperty Name="project_risk_report" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_years1" FromRole="year" ToRole="project_risk_report" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_years" FromRole="year" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="WebFormsIdentityDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="WebFormsIdentityDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="indicator_report_planner">
+          <Key>
+            <PropertyRef Name="partner_indicator_id" />
+            <PropertyRef Name="report_period_id" />
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="partner_indicator_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_report_periods" FromRole="indicator_report_planner" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_years" FromRole="indicator_report_planner" ToRole="year" />
+          <NavigationProperty Name="partner_indicator_results" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_indicator_report_planner" FromRole="indicator_report_planner" ToRole="partner_indicator_results" />
+          <NavigationProperty Name="partner_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_partner_indicators" FromRole="indicator_report_planner" ToRole="partner_indicators" />
+          <Property Name="q_target" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_indicator_report_planner_report_periods">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.indicator_report_planner" Role="indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_indicator_report_planner_years">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.indicator_report_planner" Role="indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="partner_indicator_results">
+          <Key>
+            <PropertyRef Name="partner_indicator_result_id" />
+          </Key>
+          <Property Name="partner_indicator_result_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="partner_indicator_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="indicator_report_planner" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_indicator_report_planner" FromRole="partner_indicator_results" ToRole="indicator_report_planner" />
+          <Property Name="disaggregation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_partner_reports" FromRole="partner_indicator_results" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_partner_indicator_results_indicator_report_planner">
+          <End Type="WebFormsIdentityDatabaseModel.indicator_report_planner" Role="indicator_report_planner" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicator_results" Role="partner_indicator_results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indicator_report_planner">
+              <PropertyRef Name="partner_indicator_id" />
+              <PropertyRef Name="report_period_id" />
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="partner_indicator_results">
+              <PropertyRef Name="partner_indicator_id" />
+              <PropertyRef Name="report_period_id" />
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="partner_indicators">
+          <Key>
+            <PropertyRef Name="partner_indicator_id" />
+          </Key>
+          <Property Name="partner_indicator_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="indicator_type_id" Type="Int32" />
+          <Property Name="indicator" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="indicator_report_planner" Relationship="WebFormsIdentityDatabaseModel.FK_indicator_report_planner_partner_indicators" FromRole="partner_indicators" ToRole="indicator_report_planner" />
+          <Property Name="target" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_projects" FromRole="partner_indicators" ToRole="project" />
+          <Property Name="fsda_indicator_id" Type="Int32" />
+          <NavigationProperty Name="fsda_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_fsda_indicators" FromRole="partner_indicators" ToRole="fsda_indicators" />
+          <NavigationProperty Name="project_indicator_disaggregation" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_partner_indicators" FromRole="partner_indicators" ToRole="project_indicator_disaggregation" />
+          <NavigationProperty Name="indicator_types" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_indicator_types" FromRole="partner_indicators" ToRole="indicator_types" />
+        </EntityType>
+        <Association Name="FK_indicator_report_planner_partner_indicators">
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicators" Role="partner_indicators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.indicator_report_planner" Role="indicator_report_planner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_indicators">
+              <PropertyRef Name="partner_indicator_id" />
+            </Principal>
+            <Dependent Role="indicator_report_planner">
+              <PropertyRef Name="partner_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="pillar">
+          <Key>
+            <PropertyRef Name="pillar_id" />
+          </Key>
+          <Property Name="pillar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="projects" Relationship="WebFormsIdentityDatabaseModel.FK_projects_pillars" FromRole="pillar" ToRole="project" />
+        </EntityType>
+        <EntityType Name="project_status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="projects" Relationship="WebFormsIdentityDatabaseModel.FK_projects_project_status" FromRole="project_status" ToRole="project" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="project_id" />
+          </Key>
+          <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pillar_id" Type="Int32" Nullable="false" />
+          <Property Name="project_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="implementing_partner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="acronym" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="partner_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_projects" FromRole="project" ToRole="partner_indicators" />
+          <NavigationProperty Name="pillar" Relationship="WebFormsIdentityDatabaseModel.FK_projects_pillars" FromRole="project" ToRole="pillar" />
+          <NavigationProperty Name="project_status" Relationship="WebFormsIdentityDatabaseModel.FK_projects_project_status" FromRole="project" ToRole="project_status" />
+          <Property Name="partnership_reference_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="project_objectives" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="expected_outcomes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_challenges" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_projects" FromRole="project" ToRole="partner_challenges" />
+          <NavigationProperty Name="project_overall_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_projects" FromRole="project" ToRole="project_overall_rating" />
+          <Property Name="budget" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="project_risk_report" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_projects1" FromRole="project" ToRole="project_risk_report" />
+          <NavigationProperty Name="project_risk" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_projects11" FromRole="project" ToRole="project_risk" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_projects" FromRole="project" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_partner_indicators_projects">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicators" Role="partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projects_pillars">
+          <End Type="WebFormsIdentityDatabaseModel.pillar" Role="pillar" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pillar">
+              <PropertyRef Name="pillar_id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="pillar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projects_project_status">
+          <End Type="WebFormsIdentityDatabaseModel.project_status" Role="project_status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="partner_challenges">
+          <Key>
+            <PropertyRef Name="challenge_id" />
+          </Key>
+          <Property Name="challenge_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="challenge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="effect_on_implementation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_projects" FromRole="partner_challenges" ToRole="project" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_report_periods" FromRole="partner_challenges" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_years" FromRole="partner_challenges" ToRole="year" />
+          <Property Name="mitigative_strategy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_partner_reports" FromRole="partner_challenges" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_partner_challenges_projects">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.partner_challenges" Role="partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_report_periods">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_challenges" Role="partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_challenges_years">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_challenges" Role="partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="project_overall_rating">
+          <Key>
+            <PropertyRef Name="project_overall_rating_id" />
+          </Key>
+          <Property Name="project_overall_rating_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="rating_id" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="project_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_project_rating" FromRole="project_overall_rating" ToRole="project_rating" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_projects" FromRole="project_overall_rating" ToRole="project" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_report_periods" FromRole="project_overall_rating" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_years" FromRole="project_overall_rating" ToRole="year" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_partner_reports" FromRole="project_overall_rating" ToRole="partner_reports" />
+        </EntityType>
+        <EntityType Name="project_rating">
+          <Key>
+            <PropertyRef Name="rating_id" />
+          </Key>
+          <Property Name="rating_id" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="project_overall_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_project_rating" FromRole="project_rating" ToRole="project_overall_rating" />
+        </EntityType>
+        <Association Name="FK_project_overall_rating_project_rating">
+          <End Type="WebFormsIdentityDatabaseModel.project_rating" Role="project_rating" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_overall_rating" Role="project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_rating">
+              <PropertyRef Name="rating_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="rating_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_projects">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_overall_rating" Role="project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_report_periods">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_overall_rating" Role="project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_years">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_overall_rating" Role="project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="WebFormsIdentityDatabaseModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="AspNetUserRoles">
+          <End Type="WebFormsIdentityDatabaseModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="WebFormsIdentityDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AspNetUserRolesView">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="fsda_indicators">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fsda_indicator_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="indicator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_fsda_indicators" FromRole="fsda_indicators" ToRole="partner_indicators" />
+        </EntityType>
+        <Association Name="FK_partner_indicators_fsda_indicators">
+          <End Type="WebFormsIdentityDatabaseModel.fsda_indicators" Role="fsda_indicators" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicators" Role="partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fsda_indicators">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="fsda_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="disaggregation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="disaggregation_id" Type="Int32" />
+          <Property Name="disaggregation_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="disaggregation1" Relationship="WebFormsIdentityDatabaseModel.FK_disaggregation_disaggregation" FromRole="disaggregation" ToRole="disaggregation1" />
+          <NavigationProperty Name="disaggregation2" Relationship="WebFormsIdentityDatabaseModel.FK_disaggregation_disaggregation" FromRole="disaggregation1" ToRole="disaggregation" />
+          <NavigationProperty Name="project_indicator_disaggregation" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_disaggregation" FromRole="disaggregation" ToRole="project_indicator_disaggregation" />
+        </EntityType>
+        <Association Name="FK_disaggregation_disaggregation">
+          <End Type="WebFormsIdentityDatabaseModel.disaggregation" Role="disaggregation" Multiplicity="0..1" />
+          <End Type="WebFormsIdentityDatabaseModel.disaggregation" Role="disaggregation1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="disaggregation1">
+              <PropertyRef Name="disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="project_indicator_disaggregation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_indicator_id" Type="Int32" Nullable="false" />
+          <Property Name="disaggregation_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="disaggregation" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_disaggregation" FromRole="project_indicator_disaggregation" ToRole="disaggregation" />
+          <NavigationProperty Name="partner_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_partner_indicators" FromRole="project_indicator_disaggregation" ToRole="partner_indicators" />
+          <NavigationProperty Name="project_indicator_disaggregation_result" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_project_indicator_disaggregation" FromRole="project_indicator_disaggregation" ToRole="project_indicator_disaggregation_result" />
+        </EntityType>
+        <Association Name="FK_project_indicator_disaggregation_disaggregation">
+          <End Type="WebFormsIdentityDatabaseModel.disaggregation" Role="disaggregation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation" Role="project_indicator_disaggregation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation">
+              <PropertyRef Name="disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_partner_indicators">
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicators" Role="partner_indicators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation" Role="project_indicator_disaggregation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_indicators">
+              <PropertyRef Name="partner_indicator_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation">
+              <PropertyRef Name="project_indicator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="project_indicator_disaggregation_result">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_indicator_disaggregation_id" Type="Int32" Nullable="false" />
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="disaggregation_result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="project_indicator_disaggregation" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_project_indicator_disaggregation" FromRole="project_indicator_disaggregation_result" ToRole="project_indicator_disaggregation" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_report_periods" FromRole="project_indicator_disaggregation_result" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_years" FromRole="project_indicator_disaggregation_result" ToRole="year" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_partner_reports" FromRole="project_indicator_disaggregation_result" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_project_indicator_disaggregation_result_project_indicator_disaggregation">
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation" Role="project_indicator_disaggregation" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result" Role="project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_indicator_disaggregation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="project_indicator_disaggregation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_report_periods">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result" Role="project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_years">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result" Role="project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="indicator_types">
+          <Key>
+            <PropertyRef Name="indicator_type_id" />
+          </Key>
+          <Property Name="indicator_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="indicator_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_indicators" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicators_indicator_types" FromRole="indicator_types" ToRole="partner_indicators" />
+        </EntityType>
+        <Association Name="FK_partner_indicators_indicator_types">
+          <End Type="WebFormsIdentityDatabaseModel.indicator_types" Role="indicator_types" Multiplicity="0..1" />
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicators" Role="partner_indicators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indicator_types">
+              <PropertyRef Name="indicator_type_id" />
+            </Principal>
+            <Dependent Role="partner_indicators">
+              <PropertyRef Name="indicator_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report_Data_View">
+          <Key>
+            <PropertyRef Name="partner_report_id" />
+            <PropertyRef Name="project_id" />
+            <PropertyRef Name="report_period_id" />
+            <PropertyRef Name="year_id" />
+          </Key>
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="project_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="implementing_partner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="acronym" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="partnership_reference_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="project_objectives" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="expected_outcomes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="period_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="project_risk_report">
+          <Key>
+            <PropertyRef Name="project_risk_id" />
+          </Key>
+          <Property Name="project_risk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="risk_id" Type="Int32" Nullable="false" />
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="response" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_projects1" FromRole="project_risk_report" ToRole="project" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_report_periods1" FromRole="project_risk_report" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_years1" FromRole="project_risk_report" ToRole="year" />
+          <NavigationProperty Name="project_risk" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_general_risk" FromRole="project_risk_report" ToRole="project_risk" />
+          <Property Name="attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="partner_reports" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_partner_reports" FromRole="project_risk_report" ToRole="partner_reports" />
+        </EntityType>
+        <Association Name="FK_project_risk_projects1">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_risk_report" Role="project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_report_periods1">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_risk_report" Role="project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_years1">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.project_risk_report" Role="project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="project_risk">
+          <Key>
+            <PropertyRef Name="risk_id" />
+          </Key>
+          <Property Name="risk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="risk" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="is_general_risk" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="project_risk_report" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_general_risk" FromRole="project_risk" ToRole="project_risk_report" />
+          <Property Name="project_id" Type="Int32" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_projects11" FromRole="project_risk" ToRole="project" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_project_risk_general_risk">
+          <End Type="WebFormsIdentityDatabaseModel.project_risk" Role="project_risk" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_risk_report" Role="project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project_risk">
+              <PropertyRef Name="risk_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="risk_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_projects11">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_risk" Role="project_risk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="project_risk">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="partner_reports">
+          <Key>
+            <PropertyRef Name="partner_report_id" />
+          </Key>
+          <Property Name="partner_report_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <Property Name="report_period_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="draft" Type="Boolean" Nullable="false" />
+          <Property Name="achievements" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="achievements_attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lessons_learned" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lessons_learned_attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="next_steps" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="saved" Type="Boolean" />
+          <Property Name="submitted" Type="Boolean" />
+          <Property Name="approved" Type="Boolean" />
+          <Property Name="archived" Type="Boolean" />
+          <NavigationProperty Name="partner_challenges" Relationship="WebFormsIdentityDatabaseModel.FK_partner_challenges_partner_reports" FromRole="partner_reports" ToRole="partner_challenges" />
+          <NavigationProperty Name="partner_indicator_results" Relationship="WebFormsIdentityDatabaseModel.FK_partner_indicator_results_partner_reports" FromRole="partner_reports" ToRole="partner_indicator_results" />
+          <NavigationProperty Name="project" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_projects" FromRole="partner_reports" ToRole="project" />
+          <NavigationProperty Name="report_periods" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_report_periods" FromRole="partner_reports" ToRole="report_periods" />
+          <NavigationProperty Name="year" Relationship="WebFormsIdentityDatabaseModel.FK_partner_reports_years" FromRole="partner_reports" ToRole="year" />
+          <NavigationProperty Name="project_indicator_disaggregation_result" Relationship="WebFormsIdentityDatabaseModel.FK_project_indicator_disaggregation_result_partner_reports" FromRole="partner_reports" ToRole="project_indicator_disaggregation_result" />
+          <NavigationProperty Name="project_overall_rating" Relationship="WebFormsIdentityDatabaseModel.FK_project_overall_rating_partner_reports" FromRole="partner_reports" ToRole="project_overall_rating" />
+          <NavigationProperty Name="project_risk_report" Relationship="WebFormsIdentityDatabaseModel.FK_project_risk_partner_reports" FromRole="partner_reports" ToRole="project_risk_report" />
+          <Property Name="next_steps_attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cumulative_expenditure" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cumulative_expenditure_attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_partner_challenges_partner_reports">
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_challenges" Role="partner_challenges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="partner_challenges">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_indicator_results_partner_reports">
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_indicator_results" Role="partner_indicator_results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="partner_indicator_results">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_projects">
+          <End Type="WebFormsIdentityDatabaseModel.project" Role="project" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="project_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_report_periods">
+          <End Type="WebFormsIdentityDatabaseModel.report_periods" Role="report_periods" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="report_periods">
+              <PropertyRef Name="report_period_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="report_period_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_partner_reports_years">
+          <End Type="WebFormsIdentityDatabaseModel.year" Role="year" Multiplicity="1" />
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="year">
+              <PropertyRef Name="year_id" />
+            </Principal>
+            <Dependent Role="partner_reports">
+              <PropertyRef Name="year_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_indicator_disaggregation_result_partner_reports">
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result" Role="project_indicator_disaggregation_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_indicator_disaggregation_result">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_overall_rating_partner_reports">
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_overall_rating" Role="project_overall_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_overall_rating">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_risk_partner_reports">
+          <End Type="WebFormsIdentityDatabaseModel.partner_reports" Role="partner_reports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WebFormsIdentityDatabaseModel.project_risk_report" Role="project_risk_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partner_reports">
+              <PropertyRef Name="partner_report_id" />
+            </Principal>
+            <Dependent Role="project_risk_report">
+              <PropertyRef Name="partner_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebFormsIdentityDatabaseModelStoreContainer" CdmEntityContainer="WebFormsIdentityDatabaseEntities">
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="report_periods">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.report_periods">
+              <MappingFragment StoreEntitySet="report_periods">
+                <ScalarProperty Name="period_name" ColumnName="period_name" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="years">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.year">
+              <MappingFragment StoreEntitySet="years">
+                <ScalarProperty Name="year1" ColumnName="year" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indicator_report_planner">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.indicator_report_planner">
+              <MappingFragment StoreEntitySet="indicator_report_planner">
+                <ScalarProperty Name="q_target" ColumnName="q_target" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="partner_indicator_id" ColumnName="partner_indicator_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partner_indicator_results">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.partner_indicator_results">
+              <MappingFragment StoreEntitySet="partner_indicator_results">
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="disaggregation" ColumnName="disaggregation" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="partner_indicator_id" ColumnName="partner_indicator_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+                <ScalarProperty Name="partner_indicator_result_id" ColumnName="partner_indicator_result_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partner_indicators">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.partner_indicators">
+              <MappingFragment StoreEntitySet="partner_indicators">
+                <ScalarProperty Name="fsda_indicator_id" ColumnName="fsda_indicator_id" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="indicator" ColumnName="indicator" />
+                <ScalarProperty Name="indicator_type_id" ColumnName="indicator_type_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="partner_indicator_id" ColumnName="partner_indicator_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pillars">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.pillar">
+              <MappingFragment StoreEntitySet="pillars">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pillar_id" ColumnName="pillar_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_status">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_status">
+              <MappingFragment StoreEntitySet="project_status">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project">
+              <MappingFragment StoreEntitySet="projects">
+                <ScalarProperty Name="budget" ColumnName="budget" />
+                <ScalarProperty Name="expected_outcomes" ColumnName="expected_outcomes" />
+                <ScalarProperty Name="project_objectives" ColumnName="project_objectives" />
+                <ScalarProperty Name="partnership_reference_number" ColumnName="partnership_reference_number" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="acronym" ColumnName="acronym" />
+                <ScalarProperty Name="implementing_partner" ColumnName="implementing_partner" />
+                <ScalarProperty Name="project_name" ColumnName="project_name" />
+                <ScalarProperty Name="pillar_id" ColumnName="pillar_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partner_challenges">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.partner_challenges">
+              <MappingFragment StoreEntitySet="partner_challenges">
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="mitigative_strategy" ColumnName="mitigative_strategy" />
+                <ScalarProperty Name="effect_on_implementation" ColumnName="effect_on_implementation" />
+                <ScalarProperty Name="challenge" ColumnName="challenge" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+                <ScalarProperty Name="challenge_id" ColumnName="challenge_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_overall_rating">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_overall_rating">
+              <MappingFragment StoreEntitySet="project_overall_rating">
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="rating_id" ColumnName="rating_id" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+                <ScalarProperty Name="project_overall_rating_id" ColumnName="project_overall_rating_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_rating">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_rating">
+              <MappingFragment StoreEntitySet="project_rating">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="rating_id" ColumnName="rating_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles1" TypeName="WebFormsIdentityDatabaseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="AspNetUserRolesViews">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.AspNetUserRolesView">
+              <MappingFragment StoreEntitySet="AspNetUserRolesView">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fsda_indicators">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.fsda_indicators">
+              <MappingFragment StoreEntitySet="fsda_indicators">
+                <ScalarProperty Name="indicator" ColumnName="indicator" />
+                <ScalarProperty Name="fsda_indicator_code" ColumnName="fsda_indicator_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="disaggregations">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.disaggregation">
+              <MappingFragment StoreEntitySet="disaggregation">
+                <ScalarProperty Name="disaggregation_name" ColumnName="disaggregation_name" />
+                <ScalarProperty Name="disaggregation_id" ColumnName="disaggregation_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_indicator_disaggregation">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_indicator_disaggregation">
+              <MappingFragment StoreEntitySet="project_indicator_disaggregation">
+                <ScalarProperty Name="disaggregation_id" ColumnName="disaggregation_id" />
+                <ScalarProperty Name="project_indicator_id" ColumnName="project_indicator_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_indicator_disaggregation_result">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_indicator_disaggregation_result">
+              <MappingFragment StoreEntitySet="project_indicator_disaggregation_result">
+                <ScalarProperty Name="disaggregation_result" ColumnName="disaggregation_result" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+                <ScalarProperty Name="project_indicator_disaggregation_id" ColumnName="project_indicator_disaggregation_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indicator_types">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.indicator_types">
+              <MappingFragment StoreEntitySet="indicator_types">
+                <ScalarProperty Name="indicator_type" ColumnName="indicator_type" />
+                <ScalarProperty Name="indicator_type_id" ColumnName="indicator_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_Data_View">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.Report_Data_View">
+              <MappingFragment StoreEntitySet="Report_Data_View">
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="period_name" ColumnName="period_name" />
+                <ScalarProperty Name="expected_outcomes" ColumnName="expected_outcomes" />
+                <ScalarProperty Name="project_objectives" ColumnName="project_objectives" />
+                <ScalarProperty Name="partnership_reference_number" ColumnName="partnership_reference_number" />
+                <ScalarProperty Name="acronym" ColumnName="acronym" />
+                <ScalarProperty Name="implementing_partner" ColumnName="implementing_partner" />
+                <ScalarProperty Name="project_name" ColumnName="project_name" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_risk_report">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_risk_report">
+              <MappingFragment StoreEntitySet="project_risk_report">
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+                <ScalarProperty Name="risk_id" ColumnName="risk_id" />
+                <ScalarProperty Name="project_risk_id" ColumnName="project_risk_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_risk">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.project_risk">
+              <MappingFragment StoreEntitySet="project_risk">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="is_general_risk" ColumnName="is_general_risk" />
+                <ScalarProperty Name="risk" ColumnName="risk" />
+                <ScalarProperty Name="risk_id" ColumnName="risk_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partner_reports">
+            <EntityTypeMapping TypeName="WebFormsIdentityDatabaseModel.partner_reports">
+              <MappingFragment StoreEntitySet="partner_reports">
+                <ScalarProperty Name="cumulative_expenditure_attachment" ColumnName="cumulative_expenditure_attachment" />
+                <ScalarProperty Name="cumulative_expenditure" ColumnName="cumulative_expenditure" />
+                <ScalarProperty Name="next_steps_attachment" ColumnName="next_steps_attachment" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="submitted" ColumnName="submitted" />
+                <ScalarProperty Name="saved" ColumnName="saved" />
+                <ScalarProperty Name="next_steps" ColumnName="next_steps" />
+                <ScalarProperty Name="lessons_learned_attachment" ColumnName="lessons_learned_attachment" />
+                <ScalarProperty Name="lessons_learned" ColumnName="lessons_learned" />
+                <ScalarProperty Name="achievements_attachment" ColumnName="achievements_attachment" />
+                <ScalarProperty Name="achievements" ColumnName="achievements" />
+                <ScalarProperty Name="draft" ColumnName="draft" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="report_period_id" ColumnName="report_period_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="partner_report_id" ColumnName="partner_report_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
